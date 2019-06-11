@@ -21,5 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 
 npm *
+src/formSignin.js
 /src/formSignin.js
 /src/_setup.json
+src/_setup.json
