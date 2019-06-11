@@ -28,7 +28,7 @@ The version needs to be rebuilt after making changes to the code.
     * e.g. `http://localhost/wp-react-app/`
 4. Install all required dependencies
     * `$ npm install`
-5. Modify **homepage** in **package.json** to match the url of the WordPress website
+5. Modify **homepage** in **package.json** to match the url of the **build** version (this is the full path to the directory where the app gets built!)
     * e.g. `http://localhost/wp-react-app/build`
     * Router-Config: https://stackoverflow.com/a/48943753
 6. Modify **/src/_setup.json**
