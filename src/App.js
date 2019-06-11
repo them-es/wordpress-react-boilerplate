@@ -12,7 +12,6 @@ import data from './_setup.json';
 import PageView from './pageView';
 import PostList from './postList';
 import PostView from './postView';
-import FormSignin from './formSignin';
 
 import Search from './autocomplete';
 
