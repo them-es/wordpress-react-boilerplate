@@ -1,0 +1,133 @@
+/**
+ * App Basics
+ */
+ 
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#root {
+  padding-top: 60px;
+}
+
+
+/**
+ * Offcanvas Nav
+ */
+
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    transition-property: left, visibility;
+
+    &.open {
+      left: 0;
+      visibility: visible;
+    }
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+
+  .nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    color: rgba(255, 255, 255, .75);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+
+/**
+ * Main
+ */
+
+.content {
+  padding-top: 30px;
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.navbar-brand {
+  padding: 0;
+  line-height: 1;
+
+  img {
+    height: 30px;
+    width: auto;
+  }
+}
+
+.navbar-nav {
+  form {
+    .list-group {
+      position: absolute;
+
+      .list-group-item {
+        padding: 0;
+
+        a {
+          padding: .75rem 1.25rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "format": {
+    "date": {
+      "locale": "en-US",
+      "options": { "year": "numeric", "month": "long", "day": "numeric" }
+    }
+  },
+  "url": {
+    "basename": "/wp-react-app",
+    "slug_home": "about",
+    "slug_posts": "news",
+    "api": "http://localhost/wordpress/wp-json"
+  },
+  "menu": [
+    {
+      "path": "/",
+      "title": "Home"
+    },{
+      "path": "/news/",
+      "title": "News"
+    },{
+      "path": "/about/",
+      "title": "More information",
+      "children": [
+        {
+          "path": "/our-story/",
+          "title": "Our Story"
+        },{
+          "path": "/our-mission/",
+          "title": "Our Mission"
+        },{
+          "path": "/community/",
+          "title": "Community"
+        }
+      ]
+    },{
+      "path": "/contact/",
+      "title": "Contact"
+    }
+  ]
+}

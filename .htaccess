@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^localhost
+RewriteCond %{REQUEST_URI} !^/build/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /build/$1
+RewriteCond %{HTTP_HOST} ^localhost
+RewriteRule ^(/)?$ build/index.html [L]
+
+# React Router: https://stackoverflow.com/a/51358051
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ build/index.html [QSA,L]
