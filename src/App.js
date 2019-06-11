@@ -42,17 +42,6 @@ template['posts'] = () => (
   </div>
 );
 
-// Signin
-template['signin'] = () => (
-  <div>
-    <div className="page">
-      <h3>Sign In</h3>
-
-      <FormSignin />
-    </div>
-  </div>
-);
-
 // 404
 template['404'] = ({ location }) => (
   <div>
