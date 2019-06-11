@@ -22,3 +22,4 @@ yarn-error.log*
 
 npm *
 /src/formSignin.js
+/src/_setup.json
