@@ -9,7 +9,7 @@
     "basename": "/wp-react-app",
     "slug_home": "about",
     "slug_posts": "news",
-    "api": "http://localhost/wordpress/wp-json"
+    "api": "https://central.wordcamp.org/wp-json"
   },
   "menu": [
     {

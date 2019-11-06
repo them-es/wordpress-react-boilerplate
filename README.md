@@ -1,15 +1,15 @@
 # React + WP-API
 ### Headless WordPress.
 
-This React boilerplate based on **create-react-app** helps you to create Single Page Applications which are powered by the WordPress API (WP-API).
+This React boilerplate based on **create-react-app** and **React Bootstrap** helps you to create Single Page Applications powered by the WordPress API (WP-API).
 
 
 ## What's included?
 
-* Bootstrap Framework
-* 1 menu
+* React Bootstrap Framework
 * React Router
 * WP REST API client
+* 1 menu
 * Parse content from API
 * Blog pagination: Load more posts dynamically
 * Autocomplete component
