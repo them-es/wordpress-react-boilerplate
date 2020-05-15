@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
-const Autocomplete = (props) => {
-  const listitems = props.results.map((post, i) => (
-    <ListGroup.Item as="li" role="option" tabindex="0">
-      <Link key={post.id} to={'/' + post.slug}>{post.title.rendered}</Link>
-    </ListGroup.Item>
-  ));
-
-  return <ListGroup id="autocomplete-result" as="ul" role="listbox" tabindex="-1">{listitems}</ListGroup>
+const Autocomplete = ( props ) => {
+  return <ListGroup id="autocomplete-result" as="ul">
+    {
+      props.results.map( ( post, i ) => (
+        <ListGroup.Item as="li">
+          <Link to={ '/' + post.slug }>{ post.title.rendered }</Link>
+        </ListGroup.Item>
+      ) )
+    }
+  </ListGroup>
 }
 
 export default Autocomplete;

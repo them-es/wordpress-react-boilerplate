@@ -13,32 +13,32 @@ class Search extends Component {
   getResult = () => {
     // Fetch pages with search value "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
     wp.pages().search( this.state.query )
-      .then(posts => {
+      .then( posts => {
         this.setState({
           isLoading: false,
           results: posts // Get first element from array
-        })
-      })
+        } )
+      } )
       .catch(error => {
-        this.setState({
+        this.setState( {
           error,
           isLoading: false
-        })
-      });
+        } )
+      } );
   }
 
   handleInputChange = () => {
     this.setState({
       query: this.search.value
     }, () => {
-      if (this.state.query && this.state.query.length > 1) {
+      if ( this.state.query && this.state.query.length > 1 ) {
         this.getResult();
-        this.search.setAttribute("aria-expanded", "true");
+          this.search.setAttribute( "aria-expanded", "true" );
       } else {
         this.setState({
           results: []
-        });
-        this.search.setAttribute("aria-expanded", "false");
+        } );
+          this.search.setAttribute( "aria-expanded", "false" );
       }
     })
   }
@@ -48,7 +48,11 @@ class Search extends Component {
   }
 
   handleInputBlur = () => {
-    document.getElementById("autocomplete-result").style.display = "none";
+    setTimeout(
+      function () {
+        document.getElementById("autocomplete-result").style.display = "none";
+      }, 500
+    );
   }
 
   render() {
@@ -57,16 +61,16 @@ class Search extends Component {
         <input
           className="form-control"
           placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-          onFocus={this.handleInputFocus}
-          onBlur={this.handleInputBlur}
+          ref={ input => this.search = input }
+          onChange={ this.handleInputChange }
+          onFocus={ this.handleInputFocus }
+          onBlur={ this.handleInputBlur }
           role="combobox"
           aria-owns="autocomplete-result"
           aria-autocomplete="list"
           aria-expanded="false"
         />
-        <Autocomplete results={this.state.results} />
+        <Autocomplete results={ this.state.results } />
       </form>
     )
   }

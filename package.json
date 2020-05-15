@@ -1,15 +1,15 @@
 {
   "name": "wp-react-app",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://localhost/wp-react-app/build",
   "dependencies": {
-    "@wordpress/block-library": "^2.9.5",
-    "bootstrap": "^4.3.1",
-    "node-sass": "^4.13.0",
-    "react": "^16.11.0",
-    "react-bootstrap": "^1.0.0-beta.14",
-    "react-dom": "^16.11.0",
+    "@wordpress/block-library": "^2.18.0",
+    "bootstrap": "^4.5.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.8",
     "wpapi": "^1.2.1"

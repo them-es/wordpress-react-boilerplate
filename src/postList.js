@@ -11,9 +11,9 @@ import PageLoading from './pageLoading';
 
 class PostList extends React.Component {
 
-  constructor(props) {
+  constructor( props ) {
 
-    super(props);
+    super( props );
 
     this.state = {
       error: null,
@@ -24,17 +24,17 @@ class PostList extends React.Component {
       totalpages: null,
     };
 
-    this.loadMore = this.loadMore.bind(this);
+    this.loadMore = this.loadMore.bind( this );
 
   }
 
   loadMore() {
 
-    this.setState((prev) => {
+    this.setState( ( prev ) => {
       return { currentpage: prev.currentpage + 1 };
-    });
+    } );
 
-    this.getPosts(this.state.currentpage);
+    this.getPosts( this.state.currentpage );
   }
 
   componentDidMount() {
@@ -49,11 +49,11 @@ class PostList extends React.Component {
 
     // Fetch posts: http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
     wp.posts().perPage( this.state.postsperpage ).page( currentpage )
-      .then(posts => {
+      .then( posts => {
         //console.log(posts);
 
         // Append post data to existing posts
-        if (currentpage === 1) {
+        if ( currentpage === 1 ) {
           this.setState({
             isLoading: false,
             posts: posts,
@@ -63,27 +63,27 @@ class PostList extends React.Component {
           let existingposts = this.state.posts;
           this.setState({
             isLoading: false,
-            posts: existingposts.concat(posts),
+            posts: existingposts.concat( posts ),
           })
         }
       })
-      .catch(error => {
-        this.setState({
+      .catch( error => {
+        this.setState( {
           error,
           isLoading: false,
-        })
-      });
+        } )
+      } );
   }
 
   render() {
 
     const { posts, post, error, isLoading } = this.state;
 
-    if (error) {
+    if ( error ) {
 
-      return <div className="content">Error: {error.message}</div>;
+      return <div className="content">Error: { error.message }</div>;
 
-    } else if (isLoading) {
+    } else if ( isLoading ) {
 
       return (
         <div>
@@ -91,24 +91,24 @@ class PostList extends React.Component {
         </div>
       );
 
-    } else if (posts !== []) {
+    } else if ( posts !== [] ) {
 
       return (
         <div className="content">
           <h1>Posts</h1>
           <div className="list-group">
             {
-              posts.map(post => (
-                <Link key={post.id} to={post.slug} className="list-group-item list-group-item-action">
-                  <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                  <div><small>{new Date(post.date).toLocaleDateString(data.format.date.locale, data.format.date.options)}</small></div>
+              posts.map( post => (
+                <Link key={ post.id } to={ post.slug } className="list-group-item list-group-item-action">
+                  <h2 dangerouslySetInnerHTML={ { __html: post.title.rendered } } />
+                  <div><small>{ new Date( post.date ).toLocaleDateString( data.format.date.locale, data.format.date.options ) }</small></div>
                 </Link>
               ))
             }
           </div>
           {
             this.state.currentpage <= this.state.totalpages &&
-              <button onClick={this.loadMore} type="button" className="btn btn-primary d-block my-5 mx-auto">Load more</button>
+            <button onClick={ this.loadMore } type="button" className="btn btn-primary d-block my-5 mx-auto">Load more</button>
           }
         </div>
       );

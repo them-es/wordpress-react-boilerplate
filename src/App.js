@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Navbar, Nav, NavItem, NavLink, Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import '@wordpress/block-library/build-style/style.css';
 import 'bootstrap/scss/bootstrap.scss';
@@ -46,7 +47,7 @@ template['posts'] = () => (
 template['404'] = ({ location }) => (
   <div>
     <div className="page">
-      <h3>404. Not Found. <code>{location.pathname}</code></h3>
+      <h3>404. Not Found. <code>{ location.pathname }</code></h3>
     </div>
   </div>
 );
@@ -60,7 +61,7 @@ const App = () => (
     <div>
       <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
         <Navbar.Brand href="/">
-          <img src={logo} alt="React SPA" />
+          <img src={ logo } alt="React SPA" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -68,22 +69,31 @@ const App = () => (
             {
               data.menu.map(
                 route => {
-                  if (route.children !== undefined) {
+                  //console.log(route)
+                  if ( route.children !== undefined ) {
                     return (
-                      // Dropdown
-                      <NavDropdown title={route.title} id={'nav-dropdown-' + route.title}>
-                        {
-                          route.children.map(
-                            child => (
-                              <NavLink to={child.path} exact className="dropdown-item">{child.title}</NavLink>
+                      <Dropdown as={ NavItem }>
+                        <Dropdown.Toggle as={ NavLink }>{ route.title }</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                          {
+                            route.children.map(
+                              child => (
+                                <Dropdown.Item>
+                                  <Link to={ child.path }>{ child.title }</Link>
+                                </Dropdown.Item>
+                              )
                             )
-                          )
-                        }
-                      </NavDropdown>
+                          }
+                        </Dropdown.Menu>
+                      </Dropdown>
                     );
                   } else {
                     return (
-                      <NavLink to={route.path} exact className="nav-link">{route.title}</NavLink>
+                      <Nav.Item>
+                        {
+                          <Link to={ route.path } className="nav-link">{ route.title }</Link>
+                        }
+                      </Nav.Item>
                     );
                   }
                 }
@@ -97,12 +107,12 @@ const App = () => (
       </Navbar>
 
       <Switch>
-        <Route exact path={'/'} component={template['home']} />
-        <Route exact path={'/signin/'} component={template['signin']} />
-        <Route exact path={'/' + data.url.slug_posts + '/:post'} component={PostView} />
-        <Route exact path={'/' + data.url.slug_posts + '/'} component={PostList} />
-        <Route exact path={'/:page'} component={PageView} />
-        <Route component={template['404']} />
+        <Route exact path={ '/' } component={ template[ 'home' ] } />
+        <Route exact path={ '/signin/' } component={ template[ 'signin' ] } />
+        <Route exact path={ '/' + data.url.slug_posts + '/:post' } component={ PostView } />
+        <Route exact path={ '/' + data.url.slug_posts + '/' } component={ PostList } />
+        <Route exact path={ '/:page' } component={ PageView } />
+        <Route component={ template[ '404' ] } />
       </Switch>
     </div>
   </Router>

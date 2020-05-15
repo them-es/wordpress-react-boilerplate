@@ -102,10 +102,6 @@ body {
   padding-top: 30px;
 }
 
-.list-group-item {
-  cursor: pointer;
-}
-
 .navbar-brand {
   padding: 0;
   line-height: 1;
@@ -120,11 +116,14 @@ body {
   form {
     .list-group {
       position: absolute;
+      z-index: 1100;
 
       .list-group-item {
         padding: 0;
 
         a {
+          display: block;
+          cursor: pointer;
           padding: .75rem 1.25rem;
         }
       }

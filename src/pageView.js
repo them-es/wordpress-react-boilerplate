@@ -8,32 +8,32 @@ import PageLoading from './pageLoading';
 
 class PageView extends React.Component {
 
-  constructor(props) {
+  constructor( props ) {
 
-    super(props);
+    super( props );
 
     this.state = {
       error: null,
       isLoading: true,
       posts: [],
       post: {},
-      slug: (this.props.match !== undefined ? this.props.match.params.page : (this.props.page !== undefined ? this.props.page : data.url.slug_home)),
+      slug: ( this.props.match !== undefined ? this.props.match.params.page : ( this.props.page !== undefined ? this.props.page : data.url.slug_home ) ),
     };
   }
 
   componentDidMount() {
-    this.getPost(this.state.slug);
+    this.getPost( this.state.slug );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const slug_new = (this.props.match !== undefined ? this.props.match.params.page : (this.props.page !== undefined ? this.props.page : data.url.slug_home));
+  componentDidUpdate( prevProps, prevState ) {
+    const slug_new = ( this.props.match !== undefined ? this.props.match.params.page : ( this.props.page !== undefined ? this.props.page : data.url.slug_home ) );
 
-    if (prevState.slug !== slug_new) {
-      this.getPost(slug_new);
+    if ( prevState.slug !== slug_new ) {
+      this.getPost( slug_new );
 
       this.setState({
         slug: slug_new,
-      });
+      } );
     }
   }
 
@@ -42,31 +42,31 @@ class PageView extends React.Component {
 
     // Fetch page with slug "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
     wp.pages().slug( slug )
-      .then(posts => {
+      .then( posts => {
         //console.log(posts);
         
         this.setState({
           isLoading: false,
-          post: posts[0], // Get first element from array
+          post: posts[ 0 ], // Get first element from array
         })
       })
-      .catch(error => {
+      .catch( error => {
         this.setState({
           error,
           isLoading: false,
-        })
-      });
+        } )
+      } );
   }
 
   render() {
 
     const { post, error, isLoading } = this.state;
 
-    if (error) {
+    if ( error ) {
 
-      return <div className="content">Error: {error.message}</div>;
+      return <div className="content">Error: { error.message }</div>;
 
-    } else if (isLoading) {
+    } else if ( isLoading ) {
 
       return (
         <div>
@@ -74,12 +74,12 @@ class PageView extends React.Component {
         </div>
       );
 
-    } else if (post != null) {
+    } else if ( post != null ) {
 
       return (
         <div className="content">
-          <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          <h1 dangerouslySetInnerHTML={ { __html: post.title.rendered } } />
+          <div dangerouslySetInnerHTML={ { __html: post.content.rendered } } />
         </div>
       );
 
