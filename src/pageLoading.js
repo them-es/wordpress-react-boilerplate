@@ -9,7 +9,7 @@ class PageLoading extends React.Component {
     return (
       <div className="content">
         <Spinner className="d-block m-auto" animation="grow" variant="primary" role="status">
-          <span className="sr-only">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
     );

@@ -23,19 +23,16 @@
       "title": "More information",
       "children": [
         {
-          "path": "/our-story/",
-          "title": "Our Story"
+          "path": "/what-to-expect/",
+          "title": "What to Expect"
         },{
-          "path": "/our-mission/",
-          "title": "Our Mission"
-        },{
-          "path": "/community/",
-          "title": "Community"
+          "path": "/become-an-organizer/",
+          "title": "Become an Organizer"
         }
       ]
     },{
-      "path": "/contact/",
-      "title": "Contact"
+      "path": "/contact-us/",
+      "title": "Contact Us"
     }
   ]
 }

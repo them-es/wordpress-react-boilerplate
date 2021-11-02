@@ -49,11 +49,12 @@ The version needs to be rebuilt after making changes to the code.
 
 ## Technology
 
-* [React](https://github.com/facebook/react), [MIT licence](https://github.com/facebook/react/blob/master/LICENSE)
-* [React Bootstrap](https://github.com/react-bootstrap), [MIT licence](https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE)
-* [WordPress Block Library](https://github.com/WordPress/gutenberg/tree/master/packages/block-library), [GPLv2+ licence](https://github.com/WordPress/gutenberg/blob/master/LICENSE.md)
-* [node-sass](https://github.com/sass/node-sass), [MIT licence](https://github.com/sass/node-sass/blob/master/LICENSE)
-* [node-wpapi](https://github.com/wp-api/node-wpapi), [MIT licence](https://github.com/WP-API/node-wpapi/blob/master/LICENSE)
+* [React](https://github.com/facebook/react), [MIT license](https://github.com/facebook/react/blob/master/LICENSE)
+* [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap), [MIT license](https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE)
+* [Bootstrap](https://github.com/twbs/bootstrap), [MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE)
+* [WordPress Block Library](https://github.com/WordPress/gutenberg/tree/master/packages/block-library), [GPLv2+ license](https://github.com/WordPress/gutenberg/blob/master/LICENSE.md)
+* [sass](https://github.com/sass/node-sass), [MIT license](https://github.com/sass/node-sass/blob/master/LICENSE)
+* [node-wpapi](https://github.com/wp-api/node-wpapi), [MIT license](https://github.com/WP-API/node-wpapi/blob/master/LICENSE)
 
 
 ## Copyright & License

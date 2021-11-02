@@ -59,13 +59,13 @@ template['404'] = ({ location }) => (
 const App = () => (
   <Router basename={ data.url.basename }>
     <div>
-      <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" fixed="top" className="px-3">
         <Navbar.Brand href="/">
           <img src={ logo } alt="React SPA" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="me-auto">
             {
               data.menu.map(
                 route => {
