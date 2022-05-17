@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { wp } from './wpAPI';
+import { wp } from '../wpAPI';
 
 import Autocomplete from './autocompleteResult';
 

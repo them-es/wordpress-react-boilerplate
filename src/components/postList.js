@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { wp } from './wpAPI';
+import { wp } from '../wpAPI';
 
-import data from './_setup.json';
+import data from '../_setup.json';
 
 import PageLoading from './pageLoading';
 

@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { wp } from './wpAPI';
+import { wp } from '../wpAPI';
+import { withRouter } from './withRouter'; // https://stackoverflow.com/a/71043072
 
-import data from './_setup.json';
+import data from '../_setup.json';
 
 import PageLoading from './pageLoading';
 
 
-// Date Format: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
-
 class PostView extends React.Component {
 
   constructor( props ) {
-
     super( props );
 
     this.state = {
@@ -21,24 +19,19 @@ class PostView extends React.Component {
       posts: [],
       post: {},
     };
-
   }
 
   componentDidMount() {
-    const slug = this.props.match.params.post;
-
-    this.getPost( slug );
+    this.getPost( this.props.match.params.post ? this.props.match.params.post : '404' );
   }
 
-  getPost = slug => {
-    //console.log(slug);
-
+  getPost = ( s ) => {
     // Fetch post with slug "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-    wp.posts().slug( slug )
+    wp.posts().slug( s )
       .then( posts => {
         //console.log(posts);
         
-        this.setState({
+        this.setState( {
           isLoading: false,
           post: posts[ 0 ], // Get first element from array
         } )
@@ -52,12 +45,11 @@ class PostView extends React.Component {
   }
 
   render() {
-
     const { post, error, isLoading } = this.state;
 
     if ( error ) {
 
-      return <div className="content">Error: { error.message }</div>;
+      return <div className="content error">Error: { error.message }</div>;
 
     } else if ( isLoading ) {
 
@@ -72,25 +64,20 @@ class PostView extends React.Component {
       return (
         <div className="content post">
           <div><Link to={ '/' + data.url.slug_posts + '/' } className="btn btn-outline-secondary">Go back to Posts</Link></div>
-
           <hr />
-          
           <div><small>{ new Date( post.date ).toLocaleDateString( data.format.date.locale, data.format.date.options ) }</small></div>
-          
           <h1 dangerouslySetInnerHTML={ { __html: post.title.rendered } } />
-          
           <div dangerouslySetInnerHTML={ { __html: post.content.rendered } } />
         </div>
       );
 
     } else {
 
-      return <div className="content">Nothing to view!</div>;
+      return <div className="content 404">404 - Not found!</div>;
 
     }
-
   }
 
 }
 
-export default PostView;
+export default withRouter( PostView );

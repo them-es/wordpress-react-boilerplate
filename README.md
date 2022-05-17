@@ -38,7 +38,7 @@ The version needs to be rebuilt after making changes to the code.
     * Make sure that all pages defined in **menu** have been published and are accessible. **path** needs to match the according page slug of the published page.
 7. Style your app
     * `/src/App.scss`
-    * React Bootstrap documentation: https://react-bootstrap.netlify.com
+    * React Bootstrap documentation: https://react-bootstrap.github.io
 8. Create a build version
     * `$ npm run build`
 9. Test your app
@@ -53,12 +53,12 @@ The version needs to be rebuilt after making changes to the code.
 * [React Bootstrap](https://github.com/react-bootstrap/react-bootstrap), [MIT license](https://github.com/react-bootstrap/react-bootstrap/blob/master/LICENSE)
 * [Bootstrap](https://github.com/twbs/bootstrap), [MIT license](https://github.com/twbs/bootstrap/blob/main/LICENSE)
 * [WordPress Block Library](https://github.com/WordPress/gutenberg/tree/master/packages/block-library), [GPLv2+ license](https://github.com/WordPress/gutenberg/blob/master/LICENSE.md)
-* [sass](https://github.com/sass/node-sass), [MIT license](https://github.com/sass/node-sass/blob/master/LICENSE)
+* [sass](https://github.com/sass/sass), [MIT license](https://github.com/sass/dart-sass/blob/main/LICENSE)
 * [node-wpapi](https://github.com/wp-api/node-wpapi), [MIT license](https://github.com/WP-API/node-wpapi/blob/master/LICENSE)
 
 
 ## Copyright & License
 
-Code and Documentation &copy; [them.es](http://them.es)
+Code and Documentation &copy; [them.es](https://them.es)
 
-Code released under [GPLv2+](http://www.gnu.org/licenses/gpl-2.0.html)
+Code released under [GPLv2+](https://www.gnu.org/licenses/gpl-2.0.html)

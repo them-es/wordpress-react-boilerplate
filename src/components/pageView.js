@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { wp } from './wpAPI';
+import { wp } from '../wpAPI';
+import { withRouter } from './withRouter'; // https://stackoverflow.com/a/71043072
 
-import data from './_setup.json';
+import data from '../_setup.json';
 
 import PageLoading from './pageLoading';
 
@@ -9,7 +10,6 @@ import PageLoading from './pageLoading';
 class PageView extends React.Component {
 
   constructor( props ) {
-
     super( props );
 
     this.state = {
@@ -17,12 +17,11 @@ class PageView extends React.Component {
       isLoading: true,
       posts: [],
       post: {},
-      slug: ( this.props.match !== undefined ? this.props.match.params.page : ( this.props.page !== undefined ? this.props.page : data.url.slug_home ) ),
     };
   }
 
   componentDidMount() {
-    this.getPost( this.state.slug );
+    this.getPost( this.props.match.params.page ? this.props.match.params.page : data.url.slug_home );
   }
 
   componentDidUpdate( prevProps, prevState ) {
@@ -37,21 +36,19 @@ class PageView extends React.Component {
     }
   }
 
-  getPost = slug => {
-    //console.log(slug);
-
+  getPost = ( s ) => {
     // Fetch page with slug "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-    wp.pages().slug( slug )
+    wp.pages().slug( s )
       .then( posts => {
         //console.log(posts);
         
-        this.setState({
+        this.setState( {
           isLoading: false,
           post: posts[ 0 ], // Get first element from array
-        })
-      })
+        } )
+      } )
       .catch( error => {
-        this.setState({
+        this.setState( {
           error,
           isLoading: false,
         } )
@@ -59,12 +56,11 @@ class PageView extends React.Component {
   }
 
   render() {
-
     const { post, error, isLoading } = this.state;
 
     if ( error ) {
 
-      return <div className="content">Error: { error.message }</div>;
+      return <div className="content error">Error: { error.message }</div>;
 
     } else if ( isLoading ) {
 
@@ -74,7 +70,7 @@ class PageView extends React.Component {
         </div>
       );
 
-    } else if ( post != null ) {
+    } else if ( post !== null ) {
 
       return (
         <div className="content">
@@ -85,7 +81,7 @@ class PageView extends React.Component {
 
     } else {
 
-      return <div className="content">Nothing to view!</div>;
+      return <div className="content 404">404 - Not found!</div>;
 
     }
 
@@ -93,4 +89,4 @@ class PageView extends React.Component {
 
 }
 
-export default PageView;
+export default withRouter( PageView );
