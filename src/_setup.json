@@ -6,7 +6,7 @@
     }
   },
   "url": {
-    "basename": "/wp-react-app",
+    "basename": "/wordpress-react-boilerplate",
     "slug_home": "about",
     "slug_posts": "news",
     "api": "https://central.wordcamp.org/wp-json"
