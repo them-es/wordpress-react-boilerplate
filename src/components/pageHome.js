@@ -1,12 +1,11 @@
-import data from '../_setup.json';
+import data from "../_setup.json";
 
-import PageView from './pageView';
-
+import PageView from "./pageView";
 
 export default function PageHome() {
-  return (
-    <div>
-      <PageView page={ data.url.slug_home } />
-    </div>
-  );
+	return (
+		<div>
+			<PageView page={data.url.slug_home} />
+		</div>
+	);
 }
