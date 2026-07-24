@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import { wp } from "../wpAPI";
+import apiFetch from "@wordpress/api-fetch";
+import { addQueryArgs } from "@wordpress/url";
 
 import Autocomplete from "./autocompleteResult";
+
+import data from "../_setup.json";
 
 class Search extends Component {
 	state = {
@@ -9,10 +12,13 @@ class Search extends Component {
 		results: [],
 	};
 
-	getResult = () => {
-		// Fetch pages with search value "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-		wp.pages()
-			.search(this.state.query)
+	getResult = async () => {
+		// Fetch page with search "xyz": https://developer.wordpress.org/rest-api/reference/pages/
+		await apiFetch({
+			url:
+				data.url.api +
+				addQueryArgs("/wp/v2/pages", { search: this.state.query }),
+		})
 			.then((posts) => {
 				this.setState({
 					isLoading: false,

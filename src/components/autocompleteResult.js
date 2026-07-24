@@ -7,7 +7,7 @@ const Autocomplete = (props) => {
 		<ListGroup id="autocomplete-result" as="ul">
 			{props.results.map((post, i) => (
 				<ListGroup.Item as="li">
-					<Link to={"/" + post.slug}>{post.title.rendered}</Link>
+					<Link to={`/${post.slug}`}>{post.title.rendered}</Link>
 				</ListGroup.Item>
 			))}
 		</ListGroup>

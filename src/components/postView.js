@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { wp } from "../wpAPI";
+import apiFetch from "@wordpress/api-fetch";
+import { addQueryArgs } from "@wordpress/url";
+
 import { withRouter } from "./withRouter"; // https://stackoverflow.com/a/71043072
 
-import data from "../_setup.json";
-
 import PageLoading from "./pageLoading";
+
+import data from "../_setup.json";
 
 class PostView extends React.Component {
 	constructor(props) {
@@ -25,10 +27,15 @@ class PostView extends React.Component {
 		);
 	}
 
-	getPost = (s) => {
-		// Fetch post with slug "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-		wp.posts()
-			.slug(s)
+	getPost = async (s) => {
+		// Fetch post with slug "xyz": https://developer.wordpress.org/rest-api/reference/posts/
+		await apiFetch({
+			url:
+				data.url.api +
+				addQueryArgs("/wp/v2/posts", {
+					slug: s,
+				}),
+		})
 			.then((posts) => {
 				//console.log(posts);
 
@@ -56,12 +63,12 @@ class PostView extends React.Component {
 					<PageLoading />
 				</div>
 			);
-		} else if (post !== null) {
+		} else if (post) {
 			return (
 				<div className="content post">
 					<div>
 						<Link
-							to={"/" + data.url.slug_posts + "/"}
+							to={`/${data.url.slug_posts}/`}
 							className="btn btn-outline-secondary"
 						>
 							Go back to Posts

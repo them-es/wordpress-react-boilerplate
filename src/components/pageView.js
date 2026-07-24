@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { wp } from "../wpAPI";
+import apiFetch from "@wordpress/api-fetch";
+import { addQueryArgs } from "@wordpress/url";
+
 import { withRouter } from "./withRouter"; // https://stackoverflow.com/a/71043072
 
-import data from "../_setup.json";
-
 import PageLoading from "./pageLoading";
+
+import data from "../_setup.json";
 
 class PageView extends React.Component {
 	constructor(props) {
@@ -43,10 +45,11 @@ class PageView extends React.Component {
 		}
 	}
 
-	getPost = (s) => {
-		// Fetch page with slug "xyz": http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-		wp.pages()
-			.slug(s)
+	getPost = async (s) => {
+		// Fetch page with slug "xyz": https://developer.wordpress.org/rest-api/reference/pages/
+		await apiFetch({
+			url: data.url.api + addQueryArgs("/wp/v2/pages", { slug: s }),
+		})
 			.then((posts) => {
 				//console.log(posts);
 
@@ -74,7 +77,7 @@ class PageView extends React.Component {
 					<PageLoading />
 				</div>
 			);
-		} else if (post !== null) {
+		} else if (post) {
 			return (
 				<div className="content">
 					<h1

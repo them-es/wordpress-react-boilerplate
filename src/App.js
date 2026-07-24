@@ -80,11 +80,11 @@ const App = () => (
 			<Routes>
 				<Route index element={<PageHome />} />
 				<Route
-					path={"/" + data.url.slug_posts + "/"}
+					path={`/${data.url.slug_posts}/`}
 					element={<PostList />}
 				/>
 				<Route
-					path={"/" + data.url.slug_posts + "/:post"}
+					path={`/${data.url.slug_posts}/:post`}
 					element={<PostView />}
 				/>
 				<Route path={"/:page"} element={<PageView />} />

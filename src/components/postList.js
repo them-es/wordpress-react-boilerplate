@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { wp } from "../wpAPI";
-
-import data from "../_setup.json";
+import apiFetch from "@wordpress/api-fetch";
+import { addQueryArgs } from "@wordpress/url";
 
 import PageLoading from "./pageLoading";
+
+import data from "../_setup.json";
 
 // Date Format: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
 
@@ -16,8 +17,9 @@ class PostList extends React.Component {
 			error: null,
 			isLoading: true,
 			posts: [],
-			postsperpage: 10,
-			currentpage: 1,
+			per_page: 10,
+			page: 1,
+			total: null,
 			totalpages: null,
 		};
 
@@ -37,22 +39,34 @@ class PostList extends React.Component {
 		this.loadMore();
 	}
 
-	getPosts = (currentpage) => {
+	getPosts = async (currentpage) => {
 		//console.log(currentpage);
 
-		// Fetch posts: http://wp-api.org/node-wpapi/using-the-client/#api-query-parameters
-		wp.posts()
-			.perPage(this.state.postsperpage)
-			.page(currentpage)
-			.then((posts) => {
-				//console.log(posts);
+		// Fetch posts: https://developer.wordpress.org/rest-api/reference/posts/
+		await apiFetch({
+			url:
+				data.url.api +
+				addQueryArgs("/wp/v2/posts", {
+					per_page: this.state.per_page,
+					page: currentpage,
+				}),
+			parse: false,
+		})
+			.then(async (response) => {
+				// console.log(response);
+
+				const posts = await response.json();
 
 				// Append post data to existing posts
 				if (currentpage === 1) {
 					this.setState({
 						isLoading: false,
 						posts: posts,
-						totalpages: posts._paging.totalPages,
+						total: parseInt(response.headers.get("X-WP-Total"), 10),
+						totalpages: parseInt(
+							response.headers.get("X-WP-TotalPages"),
+							10,
+						),
 					});
 				} else {
 					let existingposts = this.state.posts;
@@ -81,7 +95,7 @@ class PostList extends React.Component {
 					<PageLoading />
 				</div>
 			);
-		} else if (posts !== []) {
+		} else if (posts && posts !== []) {
 			return (
 				<div className="content">
 					<h1>Posts</h1>
