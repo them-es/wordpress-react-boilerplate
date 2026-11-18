@@ -1,38 +1,43 @@
 {
-  "format": {
-    "date": {
-      "locale": "en-US",
-      "options": { "year": "numeric", "month": "long", "day": "numeric" }
-    }
-  },
-  "url": {
-    "basename": "/wordpress-react-boilerplate",
-    "slug_home": "about",
-    "slug_posts": "news",
-    "api": "https://central.wordcamp.org/wp-json"
-  },
-  "menu": [
-    {
-      "path": "/",
-      "title": "Home"
-    },{
-      "path": "/news/",
-      "title": "News"
-    },{
-      "path": "/about/",
-      "title": "More information",
-      "children": [
-        {
-          "path": "/what-to-expect/",
-          "title": "What to Expect"
-        },{
-          "path": "/become-an-organizer/",
-          "title": "Become an Organizer"
-        }
-      ]
-    },{
-      "path": "/contact-us/",
-      "title": "Contact Us"
-    }
-  ]
+	"format": {
+		"date": {
+			"locale": "en-US",
+			"options": { "year": "numeric", "month": "long", "day": "numeric" }
+		}
+	},
+	"posts_per_page": 10,
+	"url": {
+		"basename": "/wordpress-react-boilerplate",
+		"slug_home": "about",
+		"slug_posts": "news",
+		"api": "https://central.wordcamp.org/wp-json"
+	},
+	"menu": [
+		{
+			"path": "/",
+			"title": "Home"
+		},
+		{
+			"path": "/news/",
+			"title": "News"
+		},
+		{
+			"path": "/about/",
+			"title": "More information",
+			"children": [
+				{
+					"path": "/what-to-expect/",
+					"title": "What to Expect"
+				},
+				{
+					"path": "/become-an-organizer/",
+					"title": "Become an Organizer"
+				}
+			]
+		},
+		{
+			"path": "/contact-us/",
+			"title": "Contact Us"
+		}
+	]
 }

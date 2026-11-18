@@ -1,30 +1,36 @@
 {
 	"name": "wp-react-app",
 	"private": true,
-	"version": "1.4.0",
-	"homepage": "http://localhost/wordpress-react-boilerplate/build",
-	"devDependencies": {
-		"@wordpress/block-library": "^10.2.0",
-		"@wordpress/api-fetch": "^7.51.0",
-		"@wordpress/url": "^4.51.0",
-		"bootstrap": "^5.3.8",
-		"sass": "^1.101.7",
-		"react": "^19.2.8",
-		"react-bootstrap": "^2.10.10",
-		"react-dom": "^19.2.8",
-		"react-router-dom": "^7.18.1",
-		"react-scripts": "^5.0.1"
-	},
+	"version": "2.0.0",
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
+		"start": "vite start",
+		"build": "vite build",
+		"serve": "vite serve"
 	},
 	"browserslist": [
 		">0.2%",
 		"not dead",
 		"not ie <= 11",
 		"not op_mini all"
-	]
+	],
+	"allowScripts": {
+		"@parcel/watcher@2.6.0": true,
+		"esbuild@0.28.2": true,
+		"fsevents@2.3.3": true
+	},
+	"dependencies": {
+		"@vitejs/plugin-react": "^6.3.0"
+	},
+	"devDependencies": {
+		"@wordpress/api-fetch": "^8.1.0",
+		"@wordpress/block-library": "^12.1.0",
+		"@wordpress/url": "^5.1.0",
+		"bootstrap": "^5.3.9",
+		"react": "^19.3.1",
+		"react-bootstrap": "^2.10.10",
+		"react-dom": "^19.3.1",
+		"react-router-dom": "^7.18.5",
+		"sass": "^1.108.2",
+		"vite": "^8.3.8"
+	}
 }
